@@ -11,7 +11,7 @@
 {% block content %}
 	<ul>
     {% for game in games %}
-        <li>{{ game.title }}</li>
+        <li><a href="{% url 'game_detail' game.id %}">{{ game.title }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
