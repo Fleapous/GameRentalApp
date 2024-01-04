@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block header %}
-	Landing Page
+    {% if user.is_authenticated %}
+    Welcome {{ user.username }}
+    {% else %}
+        Welcome
+    {% endif %}
 {% endblock %}
 
 
