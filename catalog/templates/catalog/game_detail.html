@@ -20,7 +20,9 @@
         <li> Carrier: <strong>{{ game.carrier }}</strong></li>
     </ul>
     <div class="game-details-card-third-col">
-        <h6>HELLOOOO</h6>
+        <a href="{% url 'rent_game' game.id %}">Rent!</a>
+        <br>
+        <a href="">Add to wish list</a>
     </div>
 </div>
 <h3>{{ game.description }}</h3>

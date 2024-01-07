@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Rent {{ game.title }}</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h3>Address Details:</h3>
+        <p>Street: {{ form.instance.address.street }}</p>
+        <p>City: {{ form.instance.address.city }}</p>
+        <p>State: {{ form.instance.address.state }}</p>
+        <p>ZIP Code: {{ form.instance.address.zip_code }}</p>
+        <p>Don't have an address? <a href="{% url 'create_address' %}">Create a new address</a></p>
+        <button type="submit">Rent Now</button>
+    </form>
+{% endblock %}

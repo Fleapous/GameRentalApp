@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm, NewAddressFrom
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
@@ -42,3 +42,19 @@ def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("home")
+
+
+def create_address(request):
+
+    if request.method == 'POST':
+        form = NewAddressFrom(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return redirect('home')
+        else:
+            print(form.errors)
+    else:
+        form = NewAddressFrom()
+
+    return render(request, 'create_address.html', {'form': form})
