@@ -47,6 +47,47 @@ footer {
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
+    width: 200px;
+}
+
+.game-details-card {
+    display: grid;
+    grid-template-columns: 21% 50% 1fr auto;
+    gap: 10px;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+
+}
+
+.game-details-card img{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin-top: 35px;
+}
+
+#game-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    text-align: center;
+
+}
+
+.game-details-card ul{
+    margin-top: 50px;
+    list-style: none;
+}
+
+.game-details-left-content {
+
 }
 
 .game-card img {
