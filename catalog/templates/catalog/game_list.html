@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<h2>Game List</h2>
+{% endblock %}
+
+{% block header %}
+	Catalog
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        {% for game in games %}
+            <div class="game-card">
+                <img src="{{ game.cover.url }}" alt="{{ game.title }}" width="60">
+                <h5><a href="{% url 'game_detail' game.id %}">{{ game.title }}</a></h5>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

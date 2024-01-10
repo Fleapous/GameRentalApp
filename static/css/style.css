@@ -1,0 +1,157 @@
+body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: #eee;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 15px;
+}
+
+#content {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.game-card {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+}
+
+.game-details-card {
+    display: grid;
+    grid-template-columns: 21% 50% 1fr auto;
+    gap: 10px;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+
+}
+
+.game-details-card img{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin-top: 35px;
+}
+
+#game-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    text-align: center;
+
+}
+
+.game-details-card ul{
+    margin-top: 50px;
+    list-style: none;
+}
+
+.game-details-left-content {
+
+}
+
+.game-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.game-card h5 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    text-align: center;
+
+}
+.game-card h5 a {
+    text-decoration: none;
+    color: #333;
+
+      .rental-history-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+/*rental history style*/
+
+.game-details-card {
+border: 1px solid #ddd;
+margin: 10px;
+padding: 15px;
+display: flex;
+}
+
+.column {
+flex: 1;
+margin: 0 10px;
+}
+
+.game-details-left-content {
+text-align: center;
+}
+
+.game-details img {
+max-width: 100%;
+height: auto;
+}
+
+.rental-info ul,
+.address-info ul {
+list-style: none;
+padding: 0;
+}
+
+.rental-info li,
+.address-info li {
+margin-bottom: 10px;
+}
+
+.address-info h3 {
+margin-top: 10px;
+}
+}
