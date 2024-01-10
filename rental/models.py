@@ -11,6 +11,12 @@ class Rental(models.Model):
     rental_date = models.DateTimeField(auto_now_add=True)
     return_date = models.DateTimeField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('completed', 'Completed')])
+    get_digital_code_only = models.BooleanField(default=False)
+    delivery_method = models.CharField(max_length=20, choices=[
+        ('standard', 'Standard'),
+        ('express', 'Express'),
+        ('next_day', 'Next Day'),
+    ], null=True, blank=True)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):

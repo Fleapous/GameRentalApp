@@ -6,9 +6,16 @@ from django.contrib.auth.models import User
 
 
 class RentalForm(forms.ModelForm):
+    DELIVERY_METHOD_CHOICES = [
+        ('standard', 'Standard'),
+        ('express', 'Express'),
+        ('next_day', 'Next Day'),
+    ]
+    delivery_method = forms.ChoiceField(choices=DELIVERY_METHOD_CHOICES, widget=forms.RadioSelect)
+
     class Meta:
         model = Rental
-        fields = ['game', 'return_date', 'address']
+        fields = ['game', 'return_date', 'delivery_method', 'get_digital_code_only', 'address']
         widgets = {
             'return_date': forms.DateInput(attrs={'type': 'date'}),
         }

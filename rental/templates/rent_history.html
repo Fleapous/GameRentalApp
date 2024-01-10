@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block header %} Rental History {% endblock %}
+{% block content %}
+  {% for user_rental in user_rentals %}
+    <div class="game-details-card">
+        <div class="game-details-left-content">
+            <h5 id="game-title">{{ user_rental.game.title }}</h5>
+            <img src="{{ user_rental.game.cover.url }}" alt="{{ user_rental.game.title }}">
+        </div>
+        <ul>
+            <li> Platform: <strong>{{ user_rental.game.platform }}</strong></li>
+            <li> Game_type: <strong>{{ user_rental.game.game_type }}</strong></li>
+            <li> Carrier: <strong>{{ user_rental.game.carrier }}</strong></li>
+        </ul>
+        <ul>
+            <li>Rental Date: <strong>{{ user_rental.rental_date }}</strong></li>
+            <li>Return Date: <strong>{{ user_rental.return_date }}</strong></li>
+            <li>Renting Status: <strong>{{ user_rental.status }}</strong></li>
+            <li>Rental Type: <strong>{{ user_rental.get_digital_code_only }}</strong></li>
+        </ul>
+        <h3>Address</h3>
+        <ul>
+            <li>State: <strong>{{ user_rental.address.state }}</strong></li>
+            <li>City: <strong>{{ user_rental.address.city }}</strong></li>
+            <li>Street: <strong>{{ user_rental.address.street }}</strong></li>
+            <li>ZIP Code: <strong>{{ user_rental.address.zip_code }}</strong></li>
+        </ul>
+    </div>
+    <h3>{{ user_rental.game.description }}</h3>
+  {% endfor %}
+{% endblock %}
