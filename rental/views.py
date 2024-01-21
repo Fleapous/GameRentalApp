@@ -1,4 +1,5 @@
-from django.http import JsonResponse
+from django.core.serializers import deserialize, serialize
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import RentalForm
@@ -41,3 +42,25 @@ def get_address_details(request, address_id):
 def get_rental_history(request):
     user_rentals = Rental.objects.filter(user=request.user).prefetch_related('game')
     return render(request, 'rent_history.html', {'user_rentals': user_rentals})
+
+
+def generate_rental_history_xml(request):
+    if request.method == 'POST':
+        user_rentals = Rental.objects.filter(user=request.user)
+        xml_data = serialize('xml', user_rentals)
+        response = HttpResponse(xml_data, content_type='application/xml')
+        response['Content-Disposition'] = 'attachment; filename="rental_history.xml"'
+        return response
+    return HttpResponse(status=405)
+
+
+def upload_rental_history_xml(request):
+    if request.method == 'POST' and request.FILES.get('file'):
+        uploaded_file = request.FILES['file']
+        xml_data = uploaded_file.read().decode('utf-8')
+        deserialized_data = list(deserialize('xml', xml_data))
+        user_rentals = [obj.object for obj in deserialized_data if isinstance(obj.object, Rental)]
+        context = {'user_rentals': user_rentals}
+        return render(request, 'rent_history_upload.html', context)
+    else:
+        return render(request, 'rent_history_upload.html', {'user_rentals': ""})

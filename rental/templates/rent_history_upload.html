@@ -1,0 +1,43 @@
+ {% extends 'base.html' %}
+{% block header %} Upload Rental History File {% endblock %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data" id="uploadXmlForm">
+        {% csrf_token %}
+        <input type="file" name="file" accept=".xml" />
+        <button type="submit" name="action" value="upload">Upload XML</button>
+    </form>
+
+    {% if user_rentals %}
+        <h3>Uploaded Rental History</h3>
+        <div class="rental-history-container">
+            {% for user_rental in user_rentals %}
+                <div class="game-details-card">
+                    <div class="column game-details">
+                        <div class="game-details-left-content">
+                            <h5 id="game-title">{{ user_rental.game.title }}</h5>
+                            <img src="{{ user_rental.game.cover.url }}" alt="{{ user_rental.game.title }}">
+                        </div>
+                    </div>
+                    <div class="column rental-info">
+                        <ul>
+                            <li>Rental Date: <strong>{{ user_rental.rental_date }}</strong></li>
+                            <li>Return Date: <strong>{{ user_rental.return_date }}</strong></li>
+                            <li>Renting Status: <strong>{{ user_rental.status }}</strong></li>
+                            <li>Rental Type: <strong>{{ user_rental.get_digital_code_only }}</strong></li>
+                        </ul>
+                    </div>
+                    <div class="column address-info">
+                        <h3>Address</h3>
+                        <ul>
+                            <li>State: <strong>{{ user_rental.address.state }}</strong></li>
+                            <li>City: <strong>{{ user_rental.address.city }}</strong></li>
+                            <li>Street: <strong>{{ user_rental.address.street }}</strong></li>
+                            <li>ZIP Code: <strong>{{ user_rental.address.zip_code }}</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}

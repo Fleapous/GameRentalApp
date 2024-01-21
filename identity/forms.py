@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from .models import Address
 
 
-
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
 

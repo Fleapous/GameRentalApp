@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Create Address</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form>
+    <h2 class="create-address-heading">Create Address</h2>
+    <form method="post" class="create-address-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="create-address-submit-btn">Submit</button>
+    </form>
 {% endblock %}

@@ -1,7 +1,12 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+    font-family: Arial, sans-serif;
+    margin: 0 0 60px;
+    padding: 0;
         box-sizing: border-box;
 }
 
@@ -32,9 +37,10 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
+    height: 60px;
 }
 .grid-container {
     display: grid;
@@ -110,48 +116,343 @@ footer {
 .game-card h5 a {
     text-decoration: none;
     color: #333;
+}
 
-      .rental-history-container {
+.rental-history-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-
-/*rental history style*/
-
-.game-details-card {
-border: 1px solid #ddd;
-margin: 10px;
-padding: 15px;
-display: flex;
 }
 
-.column {
-flex: 1;
-margin: 0 10px;
+
+.game-details-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 20px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 15px;
 }
 
 .game-details-left-content {
-text-align: center;
+    text-align: center;
 }
 
-.game-details img {
-max-width: 100%;
-height: auto;
+.game-details-left-content img {
+    max-width: 100%;
+    height: auto;
 }
 
-.rental-info ul,
-.address-info ul {
-list-style: none;
-padding: 0;
+.rent-link {
+    display: block;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-.rental-info li,
-.address-info li {
-margin-bottom: 10px;
+.game-details-right-content {
+
+}
+
+.game-details-list {
+    list-style: none;
+    padding: 0;
+}
+
+.game-details-item {
+    margin-bottom: 10px;
+}
+
+.game-details-comment-form {
+    max-width: 400px;
+    margin: auto;
+    float: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Form fields */
+.game-details-form-group {
+    margin-bottom: 20px;
+}
+
+.game-details-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.game-details-input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.game-details-submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.game-details-submit-btn:hover {
+    background-color: #0056b3;
 }
 
 .address-info h3 {
-margin-top: 10px;
+    margin-top: 10px;
 }
+
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.login-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.login-form {
+    margin-bottom: 15px;
+}
+
+.login-form input {
+    margin-bottom: 10px;
+}
+
+.login-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-button:hover {
+    background-color: #2980b9;
+}
+
+.login-text {
+    margin-top: 10px;
+    color: #333;
+}
+
+.login-text a,
+.register-text a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+.registration-box {
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.register-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.register-button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.register-text{
+    text-align: center;
+     margin-top: 10px;
+}
+
+.game-details-comment-comments {
+    clear: left;
+    margin-top: 20px;
+}
+
+.game-details-comment {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.game-details-comment strong {
+    font-weight: bold;
+}
+
+.game-details-comment p {
+    margin: 5px 0;
+}
+
+.rent-game-form {
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.rent-game-form p {
+    margin-bottom: 10px;
+}
+
+.rent-game-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.rent-game-form input[type="text"],
+.rent-game-form input[type="number"],
+.rent-game-form input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.rent-game-address-details {
+    margin-top: 20px;
+}
+
+.rent-game-address-details p {
+    margin: 5px 0;
+}
+
+.rent-game-submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.rent-game-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.rent-game-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.rent-game-address-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.rent-game-address-link:hover {
+    text-decoration: underline;
+}
+
+.create-address-form {
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.create-address-form p {
+    margin-bottom: 10px;
+}
+
+.create-address-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.create-address-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.create-address-submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.create-address-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.create-address-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.xml-actions-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.xml-generate-btn {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.xml-generate-btn:hover {
+    background-color: #0056b3;
+}
+
+.xml-upload-link {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.xml-upload-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.bi-github {
+    color: white;
+    text-decoration: none;
 }

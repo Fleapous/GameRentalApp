@@ -2,12 +2,17 @@
 
 {% block content %} 
     <div class="container py-5">
-      <h1>Login</h1>
-      <form method="POST">
-        {% csrf_token %}
-        {{ login_form }}
-        <button class="btn btn-primary" type="submit">Login</button>
-      </form>
-      <p class="text-center">Don't have an account? <a href={% url 'register' %}>Create an account</a>.</p>
+        <div class="login-container">
+            <h1>Login</h1>
+            <div class="login-box">
+                <form method="POST" class="login-form">
+                    {% csrf_token %}
+                    {{ login_form }}
+                    <button class="login-button" type="submit">Login</button>
+                </form>
+            </div>
+            <p class="login-text">Don't have an account? <a href={% url 'register' %}>Create an account</a>.</p>
+            <p class="login-text"><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+        </div>
     </div>
 {% endblock %}

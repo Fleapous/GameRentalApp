@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Rent {{ game.title }}</h2>
-        <form method="post" action="" id="rentForm">
+    <h2 class="rent-game-heading">Rent {{ game.title }}</h2>
+    <form method="post" action="" id="rentForm" class="rent-game-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <h3>Address Details:</h3>
-        <p>Street: <span id="streetSpan">{{ form.instance.address.street }}</span></p>
-        <p>City: <span id="citySpan">{{ form.instance.address.city }}</span></p>
-        <p>State: <span id="stateSpan">{{ form.instance.address.state }}</span></p>
-        <p>ZIP Code: <span id="zipCodeSpan">{{ form.instance.address.zip_code }}</span></p>
-        <p>Don't have an address? <a href="{% url 'create_address' %}">Create a new address</a></p>
-        <button type="submit">Rent Now</button>
+
+        <h3 class="rent-game-address-details">Address Details:</h3>
+        <p class="rent-game-address-details">Street: <span id="streetSpan">{{ form.instance.address.street }}</span></p>
+        <p class="rent-game-address-details">City: <span id="citySpan">{{ form.instance.address.city }}</span></p>
+        <p class="rent-game-address-details">State: <span id="stateSpan">{{ form.instance.address.state }}</span></p>
+        <p class="rent-game-address-details">ZIP Code: <span id="zipCodeSpan">{{ form.instance.address.zip_code }}</span></p>
+        <p class="rent-game-address-details">Don't have an address? <a href="{% url 'create_address' %}" class="rent-game-address-link">Create a new address</a></p>
+
+        <button type="submit" class="rent-game-submit-btn">Rent Now</button>
     </form>
 
         <script>

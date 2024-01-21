@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block header %} Rental History {% endblock %}
 {% block content %}
+    <div class="xml-actions-container">
+    <form method="post" enctype="multipart/form-data" id="downloadXmlForm">
+        {% csrf_token %}
+        <button type="button" onclick="generateAndDownloadXml()" class="xml-generate-btn">Generate History File</button>
+    </form>
+    <a href="{% url 'upload_rental_history_xml' %}" class="xml-upload-link">Upload Rental History</a>
+</div>
   <div class="rental-history-container">
     {% for user_rental in user_rentals %}
       <div class="game-details-card">
@@ -30,4 +37,53 @@
       </div>
     {% endfor %}
   </div>
+
+    <script>
+        document.getElementById('downloadXmlForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form submission
+            generateAndDownloadXml();
+        });
+
+        function generateAndDownloadXml() {
+            console.log("Button clicked!");
+            var formData = new FormData(document.getElementById('downloadXmlForm'));
+
+            fetch("{% url 'generate_rental_history_xml' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),  // Add this line
+                },
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                // Create a link element and trigger the download
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'rental_history.xml';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Extract the CSRF token
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
 {% endblock %}
